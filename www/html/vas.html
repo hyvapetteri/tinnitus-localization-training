@@ -1,0 +1,42 @@
+<div>
+  <div class="page-header">
+    <h1>Tinnitus</h1>
+  </div>
+  <p class="lead">
+    Tinnituksen voimakkuus ja häiritsevyys vaihtelevat päivittäin ja jopa
+    hetkestä toiseen. Aluksi selvitämme mikä tinnituksen tilanne on nyt.
+  </p>
+
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8 panel panel-default">
+      <div class="panel-body">
+        <div class="form-group">
+          <label for="loudnessvas">
+            Asteikolla nollasta sataan, kuinka <strong>voimakasta</strong> tinnituksesi
+            on keskimäärin ollut kuluneen vuorokauden aikana (edelliset 24 tuntia)?
+          </label>
+          <span class="help-block">(0 = ei ääntä, 100 = voimakkain kuviteltavissa oleva ääni)</span>
+          <input id="loudnessvas" name="loudnessvas" type="range" min="0" max="100" step="1" ng-model="loudnessvas"></input>
+          <span class="help-block" ng-show="!loudnessvas">Valitse sopiva arvo liukuvalitsimella</span>
+          <span class="help-block" ng-show="!!loudnessvas">Voimakkuus: {{loudnessvas}}</span>
+        </div>
+
+        <div class="form-group">
+          <label for="annoyancesvas">
+            Asteikolla nollasta sataan, kuinka <strong>häiritsevää</strong> tinnituksesi
+            on keskimäärin ollut kuluneen vuorokauden aikana (edelliset 24 tuntia)?
+          </label>
+          <span class="help-block">(0 = ei ääntä, 100 = äärimmäisen häiritsevä)</span>
+          <input id="annoyancevas" name="annoyancevas" type="range" min="0" max="100" step="1" ng-model="annoyancevas"></input>
+          <span class="help-block" ng-show="!annoyancevas">Valitse sopiva arvo liukuvalitsimella</span>
+          <span class="help-block" ng-show="!!annoyancevas">Häiritsevyys: {{annoyancevas}}</span>
+        </div>
+
+        <div class="text-center">
+          <button type="button" class="btn btn-default" ng-click="ready()">Valmis</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

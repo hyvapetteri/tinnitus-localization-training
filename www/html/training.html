@@ -1,0 +1,50 @@
+<div>
+  <div class="page-header">
+    <h1>Training</h1>
+  </div>
+  <p class="lead">Click 'Play' or press spacebar for next sound. Freq {{which_freq}} {{currentsession.mode}}</p>
+
+  <div class="row">
+    <div class="col-sm-offset-3 col-sm-6 panel panel-default">
+      <div class="panel-body text-center">
+        <button type="button" class="btn" ng-disabled="play_disabled" ng-click="play()">&#9658; Play (spacebar)</button><br/>
+        <br/>
+        <button type="button" class="btn" ng-disabled="answer_disabled" ng-click="check_answer('left')">(&#x2190;) Left</button>
+        <button type="button" class="btn" ng-disabled="answer_disabled" ng-click="check_answer('right')">Right (&#x2192;)</button>
+        <br/><br/>
+        <div ng-show="msg || (currentsession.mode == 'baseline')" style="height: 2em"><span style="vertical-align: middle">{{msg}}</span></div>
+        <div ng-show="currentsession.mode == 'training'">
+          <div ng-show="!msg && (correct == true)" style="height: 2em; vertical-align: middle"><span class="label label-success">Correct</span></div>
+          <div ng-show="!msg && (correct == false)" style="height: 2em"><span class="label label-danger">Wrong</span></div>
+        </div>
+        <br/>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" ng-style="progressstyle"></div>
+        </div>
+        <br/>
+        <button type="button" class="btn" ng-click="openModal()">Open</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/ng-template" id="finishedModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">I'm a modal!</h3>
+    </div>
+    <div class="modal-body">
+        <p ng-if="currentsession.mode == 'training'">Thank you for completing the test!
+          You got {{(correct_counter*100)/counter}}% correct!
+          Now go back to the main menu and see
+          if there are more training blocks to complete.</p>
+        <p ng-if="(currentsession.mode == 'baseline') && (which_freq == 'f1')">
+          Thank you! Next, the same test is repeated
+          with a different sound</p>
+        <p ng-if="(currentsession.mode == 'baseline') && (which_freq == 'f2')">
+          Thank you! You have now finished the first session.
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    </div>
+</script>

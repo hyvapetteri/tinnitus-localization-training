@@ -1,0 +1,156 @@
+
+heart_beat_kill_pid = 28830
+heart_beat_timeout = 11
+heart: Thu Mar  3 23:52:37 2016: heart-beat time-out, no activity for 507 seconds
+bin/couchdb: line 343: echo: write error: Broken pipe
+heart: Thu Mar  3 23:52:38 2016: Executed "bin/couchdb -k" -> 256. Terminating.
+
+heart_beat_kill_pid = 30517
+heart_beat_timeout = 11
+heart: Fri Mar  4 18:41:31 2016: heart-beat time-out, no activity for 4204 seconds
+bin/couchdb: line 343: echo: write error: Broken pipe
+heart: Fri Mar  4 18:41:32 2016: Executed "bin/couchdb -k" -> 256. Terminating.
+
+heart_beat_kill_pid = 48715
+heart_beat_timeout = 11
+heart: Thu Mar 17 10:59:26 2016: heart-beat time-out, no activity for 603 seconds
+bin/couchdb: line 343: echo: write error: Broken pipe
+heart: Thu Mar 17 10:59:27 2016: Executed "bin/couchdb -k" -> 256. Terminating.
+
+heart_beat_kill_pid = 18475
+heart_beat_timeout = 11
+heart: Fri Jun 17 20:18:29 2016: heart-beat time-out, no activity for 3593 seconds
+bin/couchdb: line 343: echo: write error: Broken pipe
+heart: Fri Jun 17 20:18:30 2016: Executed "bin/couchdb -k" -> 256. Terminating.
+
+heart_beat_kill_pid = 23452
+heart_beat_timeout = 11
+heart: Mon Jun 20 11:41:55 2016: heart-beat time-out, no activity for 4206 seconds
+bin/couchdb: line 343: echo: write error: Broken pipe
+heart: Mon Jun 20 11:41:56 2016: Executed "bin/couchdb -k" -> 256. Terminating.
+
+heart_beat_kill_pid = 786
+heart_beat_timeout = 11
+heart: Mon Jun 20 23:21:05 2016: heart-beat time-out, no activity for 4204 seconds
+bin/couchdb: line 343: echo: write error: Broken pipe
+heart: Mon Jun 20 23:21:06 2016: Executed "bin/couchdb -k" -> 256. Terminating.
+
+heart_beat_kill_pid = 2384
+heart_beat_timeout = 11
+heart: Tue Jun 21 20:46:00 2016: heart-beat time-out, no activity for 1711 seconds
+bin/couchdb: line 343: echo: write error: Broken pipe
+heart: Tue Jun 21 20:46:01 2016: Executed "bin/couchdb -k" -> 256. Terminating.
+
+heart_beat_kill_pid = 3865
+heart_beat_timeout = 11
+heart: Tue Jun 21 22:34:25 2016: heart-beat time-out, no activity for 4200 seconds
+bin/couchdb: line 343: echo: write error: Broken pipe
+heart: Tue Jun 21 22:34:26 2016: Executed "bin/couchdb -k" -> 256. Terminating.
+
+heart_beat_kill_pid = 4538
+heart_beat_timeout = 11
+heart: Wed Jun 22 20:05:46 2016: heart-beat time-out, no activity for 3595 seconds
+bin/couchdb: line 343: echo: write error: Broken pipe
+heart: Wed Jun 22 20:05:47 2016: Executed "bin/couchdb -k" -> 256. Terminating.
+
+heart_beat_kill_pid = 11404
+heart_beat_timeout = 11
+heart: Tue Jun 28 19:17:26 2016: heart-beat time-out, no activity for 3596 seconds
+bin/couchdb: line 343: echo: write error: Broken pipe
+heart: Tue Jun 28 19:17:27 2016: Executed "bin/couchdb -k" -> 256. Terminating.
+
+heart_beat_kill_pid = 13603
+heart_beat_timeout = 11
+
+heart_beat_kill_pid = 1054
+heart_beat_timeout = 11
+heart: Wed Jun 29 18:31:17 2016: heart-beat time-out, no activity for 3592 seconds
+bin/couchdb: line 343: echo: write error: Broken pipe
+heart: Wed Jun 29 18:31:18 2016: Executed "bin/couchdb -k" -> 256. Terminating.
+
+heart_beat_kill_pid = 2333
+heart_beat_timeout = 11
+heart: Thu Jun 30 22:03:44 2016: heart-beat time-out, no activity for 4203 seconds
+bin/couchdb: line 343: echo: write error: Broken pipe
+heart: Thu Jun 30 22:03:44 2016: Executed "bin/couchdb -k" -> 256. Terminating.
+
+heart_beat_kill_pid = 3908
+heart_beat_timeout = 11
+heart: Fri Jul  1 12:40:56 2016: heart-beat time-out, no activity for 4205 seconds
+bin/couchdb: line 343: echo: write error: Broken pipe
+heart: Fri Jul  1 12:40:57 2016: Executed "bin/couchdb -k" -> 256. Terminating.
+
+heart_beat_kill_pid = 4072
+heart_beat_timeout = 11
+heart: Fri Jul  1 16:07:47 2016: heart-beat time-out, no activity for 3595 seconds
+bin/couchdb: line 343: echo: write error: Broken pipe
+heart: Fri Jul  1 16:07:48 2016: Executed "bin/couchdb -k" -> 256. Terminating.
+
+heart_beat_kill_pid = 4223
+heart_beat_timeout = 11
+heart: Sat Jul  2 13:13:48 2016: heart-beat time-out, no activity for 4204 seconds
+bin/couchdb: line 343: echo: write error: Broken pipe
+heart: Sat Jul  2 13:13:49 2016: Executed "bin/couchdb -k" -> 256. Terminating.
+
+heart_beat_kill_pid = 4521
+heart_beat_timeout = 11
+heart: Sun Jul  3 14:12:35 2016: heart-beat time-out, no activity for 4202 seconds
+bin/couchdb: line 343: echo: write error: Broken pipe
+heart: Sun Jul  3 14:12:36 2016: Executed "bin/couchdb -k" -> 256. Terminating.
+
+heart_beat_kill_pid = 4828
+heart_beat_timeout = 11
+heart: Mon Jul  4 00:10:17 2016: heart-beat time-out, no activity for 3597 seconds
+bin/couchdb: line 343: echo: write error: Broken pipe
+heart: Mon Jul  4 00:10:18 2016: Executed "bin/couchdb -k" -> 256. Terminating.
+
+heart_beat_kill_pid = 5189
+heart_beat_timeout = 11
+heart: Mon Jul  4 11:43:25 2016: heart-beat time-out, no activity for 4206 seconds
+bin/couchdb: line 343: echo: write error: Broken pipe
+heart: Mon Jul  4 11:43:26 2016: Executed "bin/couchdb -k" -> 256. Terminating.
+
+heart_beat_kill_pid = 5440
+heart_beat_timeout = 11
+heart: Mon Jul  4 23:54:06 2016: heart-beat time-out, no activity for 4204 seconds
+bin/couchdb: line 343: echo: write error: Broken pipe
+heart: Tue Jul  5 21:43:52 2016: Executed "bin/couchdb -k" -> 256. Terminating.
+
+heart_beat_kill_pid = 5596
+heart_beat_timeout = 11
+heart: Tue Jul  5 23:40:18 2016: heart-beat time-out, no activity for 4201 seconds
+bin/couchdb: line 343: echo: write error: Broken pipe
+heart: Tue Jul  5 23:40:19 2016: Executed "bin/couchdb -k" -> 256. Terminating.
+
+heart_beat_kill_pid = 1296
+heart_beat_timeout = 11
+heart: Tue Jul 12 14:27:14 2016: heart-beat time-out, no activity for 249 seconds
+bin/couchdb: line 343: echo: write error: Broken pipe
+heart: Tue Jul 12 14:27:15 2016: Executed "bin/couchdb -k" -> 256. Terminating.
+
+heart_beat_kill_pid = 1561
+heart_beat_timeout = 11
+heart: Tue Jul 12 20:41:05 2016: heart-beat time-out, no activity for 3596 seconds
+bin/couchdb: line 343: echo: write error: Broken pipe
+heart: Tue Jul 12 20:41:06 2016: Executed "bin/couchdb -k" -> 256. Terminating.
+
+heart_beat_kill_pid = 7487
+heart_beat_timeout = 11
+heart: Wed Jul 20 13:03:23 2016: heart-beat time-out, no activity for 4203 seconds
+bin/couchdb: line 343: echo: write error: Broken pipe
+heart: Wed Jul 20 13:03:24 2016: Executed "bin/couchdb -k" -> 256. Terminating.
+
+heart_beat_kill_pid = 8865
+heart_beat_timeout = 11
+heart: Wed Aug 10 11:01:48 2016: heart-beat time-out, no activity for 65 seconds
+bin/couchdb: line 343: echo: write error: Broken pipe
+heart: Wed Aug 10 11:01:49 2016: Executed "bin/couchdb -k" -> 256. Terminating.
+
+heart_beat_kill_pid = 9002
+heart_beat_timeout = 11
+heart: Wed Aug 10 12:26:20 2016: heart-beat time-out, no activity for 178 seconds
+bin/couchdb: line 343: echo: write error: Broken pipe
+heart: Wed Aug 10 12:26:21 2016: Executed "bin/couchdb -k" -> 256. Terminating.
+
+heart_beat_kill_pid = 3277
+heart_beat_timeout = 11

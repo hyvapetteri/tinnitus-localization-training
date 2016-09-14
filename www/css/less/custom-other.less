@@ -1,0 +1,109 @@
+
+.header,
+.marketing,
+.footer {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  height: 80px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.header h3,
+.header-logo,
+.header-text, {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 60px;
+}
+
+nav img {
+  margin-top: 0;
+  margin-bottom:0;
+  width: 65px;
+  height: 60px;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  height: 60px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+  //background-color: #f5f5f5;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+  .footer {
+    width: 700px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+/*
+.footer {
+  padding-top: 19px;
+  border-top: 1px solid #e5e5e5;
+}*/
+
+.btn-circle {
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 20px;
+  line-height: 1.42;
+  border-radius: 75px;
+}
+
+.btn-play {
+  @include button-variant(#fff, #000, #000);
+}
+
+#leftBtn {
+  background-color: #3399FF;
+  width: 100px;
+}
+
+#rightBtn {
+  background-color: #FF8585;
+  width: 100px;
+}
+
+input[type="range"].matching {
+  max-width: 200px;
+  align-content: center;
+}

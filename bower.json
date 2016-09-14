@@ -1,0 +1,27 @@
+{
+  "name": "tinnitus-training",
+  "description": "Tinnitus training app",
+  "main": "",
+  "authors": [
+    "Petteri Hyvärinen"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "www/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "^0.2.18",
+    "jquery-knob": "^1.2.13",
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.2.1",
+    "angular-bootstrap": "^1.2.1"
+  }
+}

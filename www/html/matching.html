@@ -1,0 +1,65 @@
+
+<div>
+  <div class="page-header">
+    <h1>Tinnitusääni</h1>
+  </div>
+
+  <p class="lead">
+    Paina 'play' ja käytä säätimiä tuottaaksesi äänen joka mahdollisimman
+    tarkasti vastaa tinnitusääntä.
+  </p>
+
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8 panel panel-default">
+      <div class="panel-body text-center">
+        <div class="text-center">
+          <button type="button" class="btn btn-play" ng-click="play()" ng-bind-html="buttonTxt|unicode"></button>
+        </div>
+        <form>
+          <h3>Äänen tyyppi</h3>
+          <div class="radio">
+            <label>
+              <input type="radio" ng-model="sound" value="tone"></input>
+              piippaus/ininä
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" ng-model="sound" value="noise"></input>
+              vihellys/suhina/kohina
+            </label>
+          </div>
+          <div class="form-group" ng-show="sound == 'noise'">
+            <label for="range">&#x2190; matalampi, kohina / korkeampi, vihellys tai sirinä &#x2192;</label>
+            <input id="range" class="matching" type="range" min="-1" max="1.5" step="0.01" ng-model="q_dial"></input>
+          </div>
+          <h3>Äänenkorkeus</h3>
+          <p>
+            Käännä säädintä myötäpäivään nostaaksesi äänenkorkeutta, ja vastapäivään
+            laskeaksesi äänenkorkeutta
+          </p>
+          <input type="text" jquery-knob="true" ng-model="f_dial" value="0" data-cursor="true"></input>
+
+          <h3>Äänenvoimakkuus</h3>
+          <p>
+            Käännä säädintä myötäpäivään kasvattaaksesi äänenvoimakkuutta, ja vastapäivään
+            vähentääksesi äänenvoimakkuutta
+          </p>
+          <input type="text" jquery-knob="true" ng-model="g_dial" value="0" data-cursor="true"></input>
+
+          <div class="form-group">
+            <label for="balance">Kummalla puolella tinnitus kuuluu? (&#x2190; enemmän vasemmalla/enemmän oikealla &#x2192;)</label>
+            <input id="balance" class="matching" style="margin:auto" type="range" min="-1" max="1" step="0.01" ng-model="bal"></input>
+          </div>
+
+        </form>
+
+        <div class="text-center">
+          <button ng-show="playing == 'init'" type="button" class="btn btn-default" disabled="disabled">Etsi tinnitusta vastaava ääni ja paina sitten tästä</button>
+          <button ng-show="(playing !== 'init')" type="button" class="btn btn-default" ng-click="ready()">Valmis ({{matchCounter}}/3)</button>
+          <!--<a href="#/threshold" ng-show="matchCounter == 3" type="button" class="btn btn-default">Ready, go to next phase</a>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

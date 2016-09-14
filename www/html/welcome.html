@@ -1,0 +1,117 @@
+<div class="jumbotron">
+  <div class="page-header">
+    <h1>Welcome!</h1>
+  </div>
+  <div ng-hide="!!account.username">
+    <p class="lead">Welcome to the Tinnitus training trial of the Department of Audiology in the
+      Helsinki University Central Hospital!
+    </p>
+    <p>
+      Please <a href="#/login">log in</a> to start your training,
+      or <a href="#/signup">sign up</a> if you don't have an account yet!
+    </p>
+  </div>
+  <div ng-show="!!account.username">
+    <p>Welcome to Tinnitus Training, {{account.username}}! You can start a new session
+      or continue the current session by choosing the proper option on the left below.
+      Remember, the aim is to complete at least 10 sessions during two weeks.
+    </p>
+  </div>
+</div>
+
+<div class="row" ng-show="!!account.username">
+  <div class="col-sm-6">
+    <h4>Actions</h4>
+    <p ng-show="!currentsession">
+      <a href="#" ng-click="$event.preventDefault(); startNewSession()">Start a new session</a>
+    </p>
+    <p ng-show="!!currentsession">You have an ongoing session
+      <span ng-show="currentsession.exercises.length > 1"> with
+      {{currentsession.exercises.length}} completed exercises:</span>
+      <span ng-show="currentsession.exercises.length == 1"> with 1 completed exercise:</span>
+    </p>
+      <ul>
+        <li ng-repeat="exercise in currentsession.exercises">
+          {{exercise.difficulty}} exercise, {{(exercise.correct_counter * 100)/50}}% correct
+        </li>
+      </ul>
+    <p ng-show="!!currentsession">
+      <span ng-show="(currentsession.mode !== 'baseline')">
+        <a href="#" ng-show="(currentsession.preparations == 'done')" ng-click="$event.preventDefault(); startNewExercise()">Start a new exercise</a>
+        <a href="#/vas" ng-show="(currentsession.preparations !== 'done')">Do the training preparations</a>
+      </span>
+      <a href="#/vas" ng-show="currentsession.mode == 'baseline'">Start the test</a><br/>
+      <a href="#" ng-click="$event.preventDefault(); finishSession()">Finish session</a>
+    </p>
+  </div>
+  <div class="col-sm-6" ng-show="!!sessions.length">
+    <h4>You have {{sessions.length}} completed sessions</h4>
+    <ul>
+      <li ng-repeat="session in sessions | orderBy: 'createdAt'">
+        <span ng-show="session.mode == 'baseline'">Test session</span>
+        <span ng-show="session.mode == 'training'">Training session</span>
+        on {{session.createdAt | date:'longDate'}}
+        <ul ng-show="session.mode !== 'baseline'">
+          <li ng-repeat="exercise in session.exercises">
+            {{exercise.difficulty}} exercise, {{(exercise.correct_counter * 100)/50}}% correct
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <h4>About</h4>
+    <p>This website is part of a study by the Department of Audiology in the Helsinki
+      University Central Hospital in Finland. Its purpose is to provide an online
+      platform for individualized auditory training for people with tinnitus.
+    </p>
+    <p>Auditory training has been found to relief tinnitus symptoms, at least to some degree.
+      Whereas some earlier studies have focused on frequency-discrimination tasks
+      and others on non-task-specific listening of music, this study investigates
+      how training on auditory localization cues could affect tinnitus. Our
+      research group has previously found that subjects with tinnitus localize sounds
+      slightly differently when compared to subjects without tinnitus (both normal-hearing
+      and with hearing loss), and we're keen to knowing whether enhancing auditory
+      localization performance through training could translate into improvements
+      in the neural processing that are thought to underlie tinnitus percept.
+    </p>
+    <p>In this study, the aim is to complete at least 10 training sessions during two weeks.
+      Each training session should take about 15 minutes. In addition, there are
+      two test sessions before the first and after the 10th session which also take about
+      15 minutes to complete. The training task is very simple: to indicate whether
+      a sound moves to the left or to the right. The same sound is presented
+      two times in a row: first in the very middle and then either to the left
+      or to the right from the center. Sounds simple, but when the movement is
+      very small, it gets harder. During training you can choose from three difficulty
+      levels and get feedback on your answers in order to improve on your performance,
+      but in the test sessions you just have to trust your senses.
+    </p>
+    <p ng-hide="!!account.username"><strong>Interested in participating in the study?</strong>
+      You can start by registering <a href="#/signup">here</a>.
+    </p>
+  </div>
+</div>
+
+
+<script type="text/ng-template" id="exerciseModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">I'm a modal!</h3>
+    </div>
+    <div class="modal-body">
+      <form name="startExerciseForm">
+        <label for="exerciseDifficulty">Choose exercise difficulty</label><br/>
+        <select name="difficultySetting" id="difficultySetting" ng-model="exerciseDifficultySetting">
+          <option value="easy" selected="selected">easy</option>
+          <option value="medium">medium</option>
+          <option value="hard">hard</option>
+        </select>
+      </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>

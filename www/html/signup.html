@@ -1,0 +1,76 @@
+<div ng-controller="SignupController">
+  <div class="text-center" ng-hide="!!account.username">
+    <div class="page-header">
+      <h1>Rekisteröidy harjoitusohjelmaan</h1>
+    </div>
+    <iframe src="html/null.html" name="null"
+      style="display:none"></iframe>
+
+    <form name="signupForm"
+      action="null.html" target="null" method="post"
+      ng-submit="processSignup(signup)"
+      novalidate form-autofill-fix role="form" class="form-horizontal">
+
+      <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="form-group"
+             ng-class="{ 'has-error': (signupForm.username.$error.required && signupForm.username.$touched) || signuperror }">
+          <label for="username" class="control-label col-sm-2">Käyttäjätunnus:</label>
+          <div class="col-sm-3">
+            <input type="text" id="username" name="username"
+              ng-model="signup.username" required="" class="form-control"
+              ng-model-options="{ updateOn: 'blur' }"></input>
+            <div class="help-block" ng-show="signupForm.$submitted || signupForm.username.$touched">
+              <span ng-show="signupForm.username.$error.required">Sinun täytyy valita käyttäjätunnus</span>
+            </div>
+            <div class="help-block" ng-show="signupForm.$error.message">
+              <span>{{signupForm.$error.message}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="form-group"
+             ng-class="{ 'has-error': signupForm.password.$error.required && signupForm.password.$touched }">
+          <label for="password" class="control-label col-sm-2">Salasana:</label>
+          <div class="col-sm-3">
+            <input type="password" id="password" name="password"
+              ng-model="signup.password" required="" class="form-control"></input>
+            <div class="help-block" ng-show="signupForm.$submitted || signupForm.password.$touched">
+              <span ng-show="signupForm.password.$error.required">Salasana on pakollinen</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="form-group"
+             ng-class="{ 'has-error': (signupForm.retypepassword.$error.required || signupForm.retypepassword.$error.passwordMismatch) && signupForm.retypepassword.$touched }">
+          <label for="retypepassword" class="control-label col-sm-2">Kirjoita salasana uudestaan:</label>
+          <div class="col-sm-3">
+            <input type="password" id="retypepassword" name="retypepassword"
+              ng-model="signup.retypepassword" required="" check-password=""
+              compare-to="signup.password" class="form-control"></input>
+            <div class="help-block" ng-show="signupForm.$submitted || signupForm.retypepassword.$touched">
+              <span ng-show="signupForm.retypepassword.$error.passwordMismatch">Salasanat eivät ole samat.</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4"></div>
+      </div>
+
+      <button type="submit" class="btn btn-default">Rekisteröidy</button>
+
+    </form>
+  </div>
+  <div class="container-fluid" ng-show="!!account.username">
+    <div class="page-header">
+      <h1>Kiitos rekisteröitymisestä, {{account.username}}!</h1>
+    </div>
+  </div>
+</div>

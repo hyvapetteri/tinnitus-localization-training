@@ -1,0 +1,60 @@
+<div ng-controller="LoginController">
+  <div class="text-center" ng-hide="!!account.username">
+    <div class="page-header">
+      <h1>Kirjaudu sisään</h1>
+    </div>
+    <iframe src="html/null.html" name="null"
+      style="display:none"></iframe>
+
+    <form name="loginForm"
+      action="null.html" target="null" method="post"
+      ng-submit="processLogin(username, password)"
+      novalidate form-autofill-fix role="form" class="form-horizontal">
+
+      <div class="row">
+          <div class="form-group">
+            <label for="username" class="col-sm-offset-3 col-sm-2 control-label">Käyttäjätunnus:</label>
+            <div class="col-sm-2">
+              <input type="text" id="username" name="username"
+                ng-model="username" class="form-control"></input>
+            </div>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="form-group">
+            <label for="password" class="col-sm-offset-3 col-sm-2 control-label">Salasana:</label>
+            <div class="col-sm-2">
+              <input type="password" id="password" name="password"
+                ng-model="password" class="form-control"></input>
+            </div>
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-offset-4 col-sm-4">
+          <button type="submit" class="btn btn-default">Kirjaudu</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group has-error">
+          <div ng-show="!!loginForm.$error.message" class="col-sm-offset-4 col-sm-4">
+            <span class="help-block">{{loginForm.$error.message}}</span>
+            <span ng-show="loginerror == 'unauthorized'" class="help-block">Väärä käyttäjätunnus tai salasana. Yritä uudelleen.</span>
+            <span ng-show="loginerror == 'network'" class="help-block">
+              Verkkoyhteydessä on ongelmia, sisäänkirjautuminen ei onnistu juuri nyt.
+              Tarkista verkkoyhteytesi ja yritä uudestaan. Mikäli ongelma toistuu,
+              yritä myöhemmin uudestaan.
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+  <div class="container-fluid text-center" ng-show="!!account.username">
+    <h1>Olet kirjautuneena käyttäjätunnuksella {{account.username}}. Mikäli haluat
+    kirjautua ulos, klikkaa oikeassa yläkulmassa olevaa linkkiä.</h1>
+  </div>
+</div>

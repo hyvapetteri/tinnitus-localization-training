@@ -1,0 +1,770 @@
+<div>
+  <div class="page-header">
+    <h1>Tervetuloa!</h1>
+  </div>
+  <p class="lead">Kiitos harjoitusohjelmaan rekisteröitymisestä, {{account.username}}!
+    Seuraavaksi haluaisimme tietää hieman lisää sinusta ja tinnituksestasi.
+  </p>
+
+
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8 panel panel-default">
+      <div class="panel-body">
+        <iframe src="html/null.html" name="null"
+          style="display:none"></iframe>
+
+        <form name="infoForm"
+          action="null.html" target="null" method="post"
+          ng-submit="processInfo(info)"
+          novalidate form-autofill-fix role="form">
+
+<!--
+          <div class="form-group"
+               ng-class="{ 'has-error': (infoForm.email.$error.required || infoForm.email.$error.email) && infoForm.email.$touched }">
+            <label for="email" class="control-label">Email</label>
+            <input type="email" id="email" name="email"
+              ng-model="info.email" required="" class="form-control" autofocus=""></input>
+            <div class="help-block" ng-show="infoForm.$submitted || infoForm.email.$touched">
+              <span ng-show="infoForm.email.$error.required">Please give your email address.</span>
+              <span ng-show="infoForm.email.$error.email">The address you gave is not a valid email address.</span>
+            </div>
+          </div>
+-->
+
+          <div class="form-group"
+               ng-class="{ 'has-error': infoForm.age.$error.required && infoForm.age.$touched }">
+            <label for="age" class="control-label">Ikä</label>
+            <input type="number" id="age" name="age"
+              ng-model="info.age" required="" min="0" class="form-control"
+              placeholder="Ikä vuosina"></input>
+            <div class="help-block" ng-show="infoForm.$submitted || infoForm.age.$touched">
+              <span ng-show="infoForm.age.$error.required">Kerro ikäsi</span>
+              <span ng-show="infoForm.age.$error.integer || info.age.$error.min">Anna kokonaisluku</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="residence" class="control-label">Kotikaupunki</label>
+            <input type="text" id="residence" name="residence"
+              ng-model="info.residence" class="form-control"
+              placeholder="Kaupunki"></input>
+          </div>
+
+          <div class="form-group">
+            <label for="code" class="control-label">Mikäli sinulle on annettu osallistujatunniste, kirjoita se tähän</label>
+            <input type="text" id="code" name="code"
+              ng-model="info.code" class="form-control"
+              placeholder="Osallistujatunniste"></input>
+              <span class="help-block">Mikäli sinulla ei ole osallistujatunnistetta, jätä tämä tyhjäksi</span>
+          </div>
+
+          <div class="form-group">
+            <strong>Sukupuoli</strong>
+            <div class="radio">
+              <label>
+                <input type="radio" name="sex" id="sex1" value="female" ng-model="info.sex"></input>
+                Nainen
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="sex" id="sex2" value="male" ng-model="info.sex"></input>
+                Mies
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <strong>Kätisyys</strong>
+            <div class="radio">
+              <label>
+                <input type="radio" name="handedness" id="hand1" value="left" ng-model="info.hand"></input>
+                Vasenkätinen
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="handedness" id="hand2" value="right" ng-model="info.hand"></input>
+                Oikeakätinen
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="handedness" id="hand3" value="both" ng-model="info.hand"></input>
+                Molempikätinen
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <strong>Ovatko lähisukulaisesi valittaneet tinnituksesta?</strong>
+            <div class="radio">
+              <label>
+                <input type="radio" name="familyHistory" id="familyhistory1" value="yes" ng-model="info.familyHistory"></input>
+                Kyllä
+              </label>
+            </div>
+            <div ng-show="info.familyHistory == 'yes'">
+
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="historyParents" id="family1" ng-model="info.historyParents"></input>
+                  Vanhemmat
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="historySiblings" id="family2" ng-model="info.historySiblings"></input>
+                  Sisarukset
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="historyChildren" id="family3" ng-model="info.historyChildren"></input>
+                  Lapset
+                </label>
+              </div>
+            </div>
+
+            <div class="radio">
+              <label>
+                <input type="radio" name="familyHistory" id="familyhistory2" value="no" ng-model="info.familyHistory"></input>
+                Ei
+              </label>
+            </div>
+          </div>
+
+
+          <div class="form-group"
+               ng-class="{ 'has-error': infoForm.tinnDurationMonths.$error.max && infoForm.tinnDurationMonths.$touched }">
+            <strong>Kuinka pitkään sinulla on ollut tinnitusta?</strong>
+            <div class="row">
+              <div class="col-xs-6">
+                <label for="tinnDurationYears" class="control-label">Years</label>
+                <input type="number" id="tinnDurationYears" name="tinnDurationYears"
+                  ng-model="info.durationYears" required="" min="0" class="form-control"
+                  value="0" placeholder="Number of years"></input>
+              </div>
+              <div class="col-xs-6">
+                <label for="tinnDurationMonths" class="control-label">Months</label>
+                <input type="number" id="tinnDurationMonths" name="tinnDurationMonths"
+                  ng-model="info.durationMonths" required="" min="0" class="form-control"
+                  value="0" max="12" placeholder="Number of months"></input>
+              </div>
+              <div class="help-block" ng-show="infoForm.$submitted || infoForm.age.$touched">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <strong>When your tinnitus started, did it start abruptly or gradually?</strong>
+            <div class="radio">
+              <label>
+                <input type="radio" name="start" id="start1" value="abrupt" ng-model="info.start"></input>
+                Abruptly
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="start" id="start2" value="gradual" ng-model="info.start"></input>
+                Gradually
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <strong>Was the initial onset of tinnitus related one or more of the following?</strong>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="initialBlast" id="initial1" ng-model="info.initialContinuousSound"></input>
+                Loud continuous sound
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="initialBlast" id="initial1" ng-model="info.initialBlast"></input>
+                Loud blast of sound
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="initialWhiplash" id="initial2" ng-model="info.initialWhiplash"></input>
+                Whiplash
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="initialChangedHearing" id="initial3" ng-model="info.initialChangedHearing"></input>
+                Change in hearing
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="initialStress" id="initial4" ng-model="info.initialStress"></input>
+                Stress
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="initialHeadTrauma" id="initial5" ng-model="info.initialHeadTrauma"></input>
+                Head trauma
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="initialOthers" id="initial6" ng-model="info.initialOthers"></input>
+                Other
+              </label>
+            </div>
+            <textarea ng-show="info.initialOthers" class="form-control" rows="3"
+                ng-model="info.initialOthersText" placeholder="Please describe here what the tinnitus onset was related to"></textarea>
+          </div>
+
+          <div class="form-group">
+            <strong>Does your tinnitus seem to pulsate?</strong>
+            <div class="radio">
+              <label>
+                <input type="radio" name="pulsatile" id="pulsatile1" value="heartbeat" ng-model="info.pulsatile"></input>
+                Yes, with heartbeat
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="pulsatile" id="pulsatile2" value="pulsatile" ng-model="info.pulsatile"></input>
+                Yes, different from heartbeat
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="pulsatile" id="pulsatile3" value="no" ng-model="info.pulsatile"></input>
+                No
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <strong>Where do you perceive your tinnitus?</strong>
+            <div class="radio">
+              <label>
+                <input type="radio" name="tinnlocation" id="tinnlocation1" value="right" ng-model="info.tinnlocation"></input>
+                Right ear
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="tinnlocation" id="tinnlocation2" value="left" ng-model="info.tinnlocation"></input>
+                Left ear
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="tinnlocation" id="tinnlocation3" value="bothleft" ng-model="info.tinnlocation"></input>
+                Both ears, worse in left
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="tinnlocation" id="tinnlocation4" value="bothright" ng-model="info.tinnlocation"></input>
+                Both ears, worse in right
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="tinnlocation" id="tinnlocation5" value="bothequal" ng-model="info.tinnlocation"></input>
+                Both ears, equally
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="tinnlocation" id="tinnlocation6" value="inside" ng-model="info.tinnlocation"></input>
+                Inside the head
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="tinnlocation" id="tinnlocation7" value="else" ng-model="info.tinnlocation"></input>
+                Elsewhere
+              </label>
+            </div>
+            <input ng-show="info.tinnlocation == 'else'" type="text"
+                placeholder="Please describe" class="form-control"
+                ng-model="info.tinnlocationElse"></input>
+          </div>
+
+          <div class="form-group">
+            <strong>How does your tinnitus manifest itself over time?</strong>
+            <div class="radio">
+              <label>
+                <input type="radio" name="tinnconstant" id="tinnconstant1" value="intermittent" ng-model="info.tinnconstant"></input>
+                Intermittent
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="tinnconstant" id="tinnconstant2" value="constant" ng-model="info.tinnconstant"></input>
+                Constant
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <strong>Does the loudness of the tinnitus vary from day to day?</strong>
+            <div class="radio">
+              <label>
+                <input type="radio" name="loudnessvary" id="loudnessvary1" value="yes" ng-model="info.loudnessvary"></input>
+                Yes
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="loudnessvary" id="loudnessvary2" value="no" ng-model="info.loudnessvary"></input>
+                No
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="loudnessvas">Describe the loudness of your tinnitus using a scale from 0 to 100</label>
+            <span class="help-block">(0 = no sound, 100 = loudest sound imaginable)</span>
+            <input id="loudnessvas" name="loudnessvas" type="range" min="0" max="100" step="1" ng-model="info.loudnessvas"></input>
+            <span class="help-block" ng-show="!info.loudnessvas">Use the scale to choose the right value</span>
+            <span class="help-block" ng-show="!!info.loudnessvas">Loudness: {{info.loudnessvas}}</span>
+          </div>
+
+          <div class="form-group">
+            <label for="tinnitusDescription">Please describe in your own words what your tinnitus
+              usually sounds like</label>
+            <textarea id="tinnitusDescription" name="tinnitusDescription"
+                ng-model="info.tinnitusDescription" placeholder="Describe your tinnitus"
+                class="form-control" rows="4"></textarea>
+            <span class="help-block">The following list gives examples of some possible sensations,
+              feel free to use other terms as well: hissing, ringing, pulsing, buzzing, clicking,
+              cracking, crickets, tonal (like a dial tone or other kinds of tones), humming, popping, roaring,
+              rushing, typewriter, whistling, whooshing.</span>
+          </div>
+
+          <div class="form-group">
+            <strong>Does your tinnitus sound more like a tone or more like noise?</strong>
+            <div class="radio">
+              <label>
+                <input type="radio" name="tinnitussound" id="tinnitussound1" value="tone" ng-model="info.tinnitussound"></input>
+                Tone
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="tinnitussound" id="tinnitussound2" value="noise" ng-model="info.tinnitussound"></input>
+                Noise
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="tinnitussound" id="tinnitussound3" value="other" ng-model="info.tinnitussound"></input>
+                Other (description above)
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <strong>Describe the pitch of your tinnitus</strong>
+            <div class="radio">
+              <label>
+                <input type="radio" name="tinnpitch" id="tinnpitch1" value="veryhigh" ng-model="info.tinnpitch"></input>
+                Very high frequency
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="tinnpitch" id="tinnpitch2" value="high" ng-model="info.tinnpitch"></input>
+                High frequency
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="tinnpitch" id="tinnpitch3" value="mid" ng-model="info.tinnpitch"></input>
+                Mid frequency
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="tinnpitch" id="tinnpitch4" value="low" ng-model="info.tinnpitch"></input>
+                Low frequency
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="awarenessvas">What percentage of your total awake time, over the last month,
+              have you been aware of your tinnitus?</label>
+            <input id="awarenessvas" name="awarenessvas" type="range" min="1" max="100" step="1" ng-model="info.awarenessvas"></input>
+            <span class="help-block" ng-show="!info.awarenessvas">Use the scale to choose the right value</span>
+            <span class="help-block" ng-show="!!info.awarenessvas">Aware {{info.awarenessvas}}% of my awake time</span>
+          </div>
+
+          <div class="form-group">
+            <label for="irritatedpercent">What percentage of your total awake time, over the last month,
+              have you been annoyed, distressed, or irritated by your tinnitus?</label>
+            <input id="irritatedpercent" name="irritatedpercent" type="range" min="1" max="100" step="1" ng-model="info.irritatedpercent"></input>
+            <span class="help-block" ng-show="!info.irritatedpercent">Use the scale to choose the right value</span>
+            <span class="help-block" ng-show="!!info.irritatedpercent">Annoyed, distressed, or irritated {{info.irritatedpercent}}% of my awake time</span>
+          </div>
+
+          <div class="form-group">
+            <strong>Have you previously received or are you currently receiving treatment for your tinnitus?</strong>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="previousTreatment" id="previousTreatment1" ng-model="info.previousTreatment"></input>
+                Yes, previously
+              </label>
+            </div>
+            <textarea ng-show="info.previousTreatment" class="form-control" rows="3"
+                ng-model="info.previousTreatmentDescription"
+                placeholder="Please describe how many treatments you have tried and what treatments were given"></textarea>
+
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="currentTreatment" id="currentTreatment1"
+                ng-model="info.currentTreatment"></input>
+                Yes, currently
+              </label>
+            </div>
+            <textarea ng-show="info.currentTreatment" class="form-control" rows="3"
+                ng-model="info.currentTreatmentDescription"
+                placeholder="Please describe your current treatment"></textarea>
+          </div>
+
+          <div class="form-group">
+            <strong>Is your tinnitus reduced by any type of everyday sounds?</strong>
+            <span class="help-block">These could be sounds such as water running in the shower,
+              traffic noise, TV/radio, a conversation etc.</span>
+            <div class="radio">
+              <label>
+                <input type="radio" name="environmentalsounds" id="environmentalsounds1" value="yes" ng-model="info.environmentalsounds"></input>
+                Yes
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="environmentalsounds" id="environmentalsounds2" value="no" ng-model="info.environmentalsounds"></input>
+                No
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <strong>Does loud noise make your tinnitus worse?</strong>
+            <div class="radio">
+              <label>
+                <input type="radio" name="noiseworse" id="noiseworse1" value="yes" ng-model="info.noiseworse"></input>
+                Yes
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="noiseworse" id="noiseworse2" value="no" ng-model="info.noiseworse"></input>
+                No
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <strong>Does any kind of head or neck movement or touch affect your tinnitus?</strong>
+            <span class="help-block">
+              e.g. moving the jaw forward, clenching your teeth, tilting your head,
+              shrugging your shoulders, touching your neck/ears/arms/head, ...
+            </span>
+            <div class="radio">
+              <label>
+                <input type="radio" name="somatosensory" id="somatosensory1" value="yes" ng-model="info.somatosensory"></input>
+                Yes
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="somatosensory" id="somatosensory2" value="no" ng-model="info.somatosensory"></input>
+                No
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <strong>Does taking a nap during the day affect your tinnitus?</strong>
+            <div class="radio">
+              <label>
+                <input type="radio" name="napping" id="napping1" value="worse" ng-model="info.napping"></input>
+                It makes the tinnitus worse
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="napping" id="napping2" value="better" ng-model="info.napping"></input>
+                It makes the tinnitus better
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="napping" id="napping3" value="no" ng-model="info.napping"></input>
+                It has no effect on my tinnitus
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <strong>Is there a relationship between night-time sleep and your tinnitus during the day?</strong>
+            <div class="radio">
+              <label>
+                <input type="radio" name="nightsleep" id="nightsleep1" value="yes" ng-model="info.nightsleep"></input>
+                Yes
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="nightsleep" id="nightsleep2" value="no" ng-model="info.nightsleep"></input>
+                No
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <strong>How does stress affect your tinnitus?</strong>
+            <div class="radio">
+              <label>
+                <input type="radio" name="stress" id="stress1" value="worse" ng-model="info.stress"></input>
+                It makes the tinnitus worse
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="stress" id="stress2" value="better" ng-model="info.stress"></input>
+                It makes the tinnitus better
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="stress" id="stress3" value="no" ng-model="info.stress"></input>
+                It has no effect on my tinnitus
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="medicationDescription">Are there any medications that affect your tinnitus?
+             Please list those medications and describe their effect</label>
+            <textarea id="medicationDescription" name="medicationDescription"
+                ng-model="info.medicationDescription" placeholder="Describe what effects medication has on your tinnitus"
+                class="form-control" rows="4"></textarea>
+          </div>
+
+          <div class="form-group">
+            <strong>Do you experience any hearing problems?</strong>
+            <div class="radio">
+              <label>
+                <input type="radio" name="hearingproblem" id="hearingproblem1" value="yes" ng-model="info.hearingproblem"></input>
+                Yes
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="hearingproblem" id="hearingproblem2" value="no" ng-model="info.hearingproblem"></input>
+                No
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <strong>Do you use hearing aids?</strong>
+            <div class="radio">
+              <label>
+                <input type="radio" name="hearingaid" id="hearingaid1" value="yes" ng-model="info.hearingaid"></input>
+                Yes
+              </label>
+            </div>
+            <div ng-show="info.hearingaid == 'yes'">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="hearingaidside" id="hearingaidside1" value="right" ng-model="info.hearingaidside"></input>
+                  Hearing aid in right ear
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="hearingaidside" id="hearingaidside2" value="left" ng-model="info.hearingaidside"></input>
+                  Hearing aid in left ear
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="hearingaidside" id="hearingaidside3" value="both" ng-model="info.hearingaidside"></input>
+                  Hearing aid in both ears
+                </label>
+              </div>
+            </div>
+
+            <div class="radio">
+              <label>
+                <input type="radio" name="hearingaid" id="hearingaid2" value="no" ng-model="info.hearingaid"></input>
+                No
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <strong>Are you sensitive to loud sounds?</strong>
+            <span class="help-block">
+              Do you have problems tolerating sounds because they feel much too loud,
+              even when other people around you are comfortable?
+            </span>
+            <div class="radio">
+              <label>
+                <input type="radio" name="hyperacusia" id="hyperacusia1" value="never" ng-model="info.hyperacusia"></input>
+                Never
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="hyperacusia" id="hyperacusia2" value="rarely" ng-model="info.hyperacusia"></input>
+                Rarely
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="hyperacusia" id="hyperacusia3" value="sometimes" ng-model="info.hyperacusia"></input>
+                Sometimes
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="hyperacusia" id="hyperacusia4" value="usually" ng-model="info.hyperacusia"></input>
+                Usually
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="hyperacusia" id="hyperacusia5" value="always" ng-model="info.hyperacusia"></input>
+                Always
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <strong>Do sounds cause you pain or physical discomfort?</strong>
+            <div class="radio">
+              <label>
+                <input type="radio" name="paindiscomfort" id="paindiscomfort1" value="yes" ng-model="info.paindiscomfort"></input>
+                Yes
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="paindiscomfort" id="paindiscomfort2" value="no" ng-model="info.paindiscomfort"></input>
+                No
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <strong>Do you suffer from headaches?</strong>
+            <div class="radio">
+              <label>
+                <input type="radio" name="headache" id="headache1" value="yes" ng-model="info.headache"></input>
+                Yes
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="headache" id="headache2" value="no" ng-model="info.headache"></input>
+                No
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <strong>Do you suffer from vertigo or dizziness?</strong>
+            <div class="radio">
+              <label>
+                <input type="radio" name="vertigo" id="vertigo1" value="yes" ng-model="info.vertigo"></input>
+                Yes
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="vertigo" id="vertigo2" value="no" ng-model="info.vertigo"></input>
+                No
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <strong>Do you suffer from temporomandibular disorder?</strong>
+            <div class="radio">
+              <label>
+                <input type="radio" name="tmd" id="tmd1" value="yes" ng-model="info.tmd"></input>
+                Yes
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="tmd" id="tmd2" value="no" ng-model="info.tmd"></input>
+                No
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <strong>Do you suffer from neck pain?</strong>
+            <div class="radio">
+              <label>
+                <input type="radio" name="neckpain" id="neckpain1" value="yes" ng-model="info.neckpain"></input>
+                Yes
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="neckpain" id="neckpain2" value="no" ng-model="info.neckpain"></input>
+                No
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <strong>Do you suffer from other pain syndromes?</strong>
+            <div class="radio">
+              <label>
+                <input type="radio" name="otherpain" id="otherpain1" value="yes" ng-model="info.otherpain"></input>
+                Yes
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="otherpain" id="otherpain2" value="no" ng-model="info.otherpain"></input>
+                No
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <strong>Are you currently under treatment for psychiatric problems?</strong>
+            <div class="radio">
+              <label>
+                <input type="radio" name="psychiatric" id="psychiatric1" value="yes" ng-model="info.psychiatric"></input>
+                Yes
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="psychiatric" id="psychiatric2" value="no" ng-model="info.psychiatric"></input>
+                No
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-default">Save</button>
+
+          <div ng-show="signupsuccess">Succesfully signed up!</div>
+          <div ng-show="signuperror == 'network'">There seems to be a problem in the internet connection.
+            Check your connection and try again!</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

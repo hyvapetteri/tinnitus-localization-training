@@ -1,0 +1,46 @@
+<div>
+  <div class="page-header">
+    <h1>Threshold test</h1>
+  </div>
+  <p class="lead">Now we'll find your hearing threshold for a test sound.</p>
+  <p>Click play when you're ready to start. There will be a constant hissing sound that starts from
+    very quiet (you won't hear it at first, just wait a little), and gets louder. When you hear
+    the sound, press the 'I hear the sound'-button and keep it pressed. Keep the button
+    pressed until you can't hear the sound anymore and release the button. <br/>
+    Keep repeating this (hear the sound &#x2192; keep pressing button; can't hear the
+    sound &#x2192; release button) until
+    the meter below the button fills up.</p>
+
+  <div class="text-center">
+    <button type="button" class="btn" ng-click="play()" ng-bind-html="buttonTxt|unicode"></button><br/><br/><br/>
+    <button type="button" class="btn btn-default btn-circle" ng-mousedown="press()" ng-mouseup="release()">I hear the sound</button>
+  </div>
+  <br/><br/>
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" ng-style="progressstyle"></div>
+  </div>
+
+</div>
+
+<script type="text/ng-template" id="finishedModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Done!</h3>
+    </div>
+    <div class="modal-body">
+        <p>Thank you!</p>
+        <p ng-show="frequency == 'f1'">Next, the same test is repeated with another
+          sound
+        </p>
+        <p ng-show="(currentsession.mode == 'training') && (frequency == 'f2')">
+          The training preparations are now done. You'll be redirected to the
+          start page, where you can start new exercises. Please remember,
+          <strong>don't adjust the volume during the exercises</strong>.
+        </p>
+        <p ng-show="(currentsession.mode == 'baseline') && (frequency == 'f2')">
+          Next, you'll complete a sound localization test.
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    </div>
+</script>

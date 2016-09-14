@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html ng-app="tinnitusTraining" ng-controller="UserController">
+    <head>
+        <meta charset="UTF-8"></meta>
+        <title>Kuunteluharjoitus tinnitukseen</title>
+
+        <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css"></link>
+        <link rel="shortcut icon" href="icon/favicon-32x32.ico">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+
+      <div class="container">
+
+        <div class="header clearfix">
+          <nav>
+              <span class="pull-left" style="margin-right: 15px">
+                <a href="#/welcome">
+                  <img src="images/hy-logo.gif"></img>
+                </a>
+              </span>
+              <span class="pull-right header-text">
+                <p ng-show="!!account.username">Käyttäjä {{account.username}} - <a href="#" ng-click="accountAction.logout()" class="navbar-link">kirjaudu ulos</a></p>
+                <p ng-show="!account.username"><a href="#/login" class="navbar-link">Kirjaudu sisään</a></p>
+              </span>
+          </nav>
+          <h3 class="text-muted">Kuunteluharjoitus</h3>
+
+        </div>
+
+        <div id="main">
+            <div class="row">
+              <div ui-view class="col-sm-12"></div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p class="text-muted"><small>Helsingin yliopistollinen keskussairaala, Korvaklinikka<small></p>
+        </footer>
+
+      </div> <!-- container -->
+    </body>
+
+      <!-- dependencies -->
+      <script src="components/angular/angular.js"></script>
+      <script src="components/angular-ui-router/release/angular-ui-router.min.js"></script>
+      <script src="components/jquery/dist/jquery.min.js"></script>
+      <script src="components/bootstrap/dist/js/bootstrap.min.js"></script>
+      <script src="components/jquery-knob/dist/jquery.knob.min.js"></script>
+      <script src="components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+      <script src="/_api/_files/hoodie.js"></script>
+
+      <!-- tinnitus training app -->
+      <script type="text/javascript" src="js/app.js"></script>
+      <script type="text/javascript" src="js/config.js"></script>
+      <script type="text/javascript" src="js/directives.js"></script>
+      <script type="text/javascript" src="js/info-ctrl.js"></script>
+      <script type="text/javascript" src="js/login-ctrl.js"></script>
+      <script type="text/javascript" src="js/matching-ctrl.js"></script>
+      <script type="text/javascript" src="js/signup-ctrl.js"></script>
+      <script type="text/javascript" src="js/soundcheck-ctrl.js"></script>
+      <script type="text/javascript" src="js/threshold-ctrl.js"></script>
+      <script type="text/javascript" src="js/training-ctrl.js"></script>
+      <script type="text/javascript" src="js/user-ctrl.js"></script>
+      <script type="text/javascript" src="js/welcome-ctrl.js"></script>
+      <script type="text/javascript" src="js/vas-ctrl.js"></script>
+
+  <script type="text/ng-template" id="exitModal.html">
+      <div class="modal-header">
+          <h3 class="modal-title">I'm a modal!</h3>
+      </div>
+      <div class="modal-body">
+        Don't leave before saving!
+      </div>
+      <div class="modal-footer">
+          <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+          <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+      </div>
+  </script>
+</html>
